@@ -1,0 +1,19 @@
+﻿@using MyToolkit.Html
+@model DDD.MVC.Areas.Sp.ViewModels.PhoneViewModel
+
+<li style="cursor: move">
+	<div class="panel panel-default panel-body">
+		@using (Html.BeginCollectionItem("Phones"))
+	{
+		@Html.HiddenFor(m => m.PhoneId)
+		@Html.HiddenFor(m => m.ClientId)
+		<p>
+			@Html.LabelFor(m => m.Number)
+			@Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Number, null, new { @class = "text-danger" })
+		</p>
+		<input type="button" value="Delete" class="btn btn-danger"
+			   onclick="$(this).parent().remove();" />
+	}
+	</div>
+</li>
